@@ -43,8 +43,19 @@ const routes = [
     {
       path:'/categoryView',
       component: () => import('../views/children/category.vue') 
+    },
+    {
+      path:'/particularProduct',
+      component: () => import('../views/children/particularProduct.vue') 
+    },
+    {
+      path:'/createNewProduct',
+      component: () => import('../views/children/createNewProduct.vue') 
+    },
+    {
+      path:'/AddStock',
+      component: () => import('../views/children/AddStock.vue') 
     }
-    
     
     ]
   }

@@ -3,7 +3,7 @@
 <v-layout row wrap>
 
 
-    <v-flex xs12 md4 px-2 mb-4 v-for="product in products" :key="product">
+    <v-flex xs12 md4 px-2 mb-4 v-for="(product,index) in getCategory" :key="index">
             <v-card color="blue-grey lighten-2" class="white--text" @click="description(product)">
               <v-layout row>
                 <v-flex xs4 md4>
@@ -43,6 +43,7 @@
 
 <script>
   import axios from 'axios'
+  import {mapGetters} from 'vuex'
   
   export default {
     components: {
@@ -61,8 +62,9 @@
     async created() {
       try {
       
-    //   const resp = await axios.get(`http://172.16.20.131:8086/product/getAllProducts`);
-    const resp = await axios.get(`http://localhost:8082/productService/product/showProducts/${this.$store.getters.categoryId}`)
+      // const resp = await axios.get(`http://172.16.20.131:8086/product/getAllProducts`);
+    // const resp = await axios.get(`http://localhost:8082/productService/product/showProducts/${this.$store.getters.categoryId}`)
+    const resp = await axios.get(`http://172.16.20.131:8086/product/showProducts/${this.$store.getters.categoryId}`)
 
       window.console.log(resp)
    
@@ -74,11 +76,8 @@
     },
     computed: {
           
-   categoryId(){
-
-   return   this.$store.getters.categoryId
-   
-    }
+   ...mapGetters(['getCategory'])
+    
     }
   }
 

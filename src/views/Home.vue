@@ -113,7 +113,7 @@
     },
     data: () => ({
       categories:[
-       'merchandise','cricket','football','badminton','tennis'
+       'merchandise','cricket','fitness','badminton','tennis'
       ],
       searchString:'',
       dialog: false,
@@ -153,20 +153,23 @@
     }),
     methods:{
       searchFunc(){
-        this.$store.state.searchString=this.searchString
-        this.$router.push('/search')
+       this.$store.dispatch('search',this.searchString)
+       if(this.$router.currentRoute !=='/search')
+       this.$router.push('/search')
       },
       cart(){
 this.$router.push('/cart')
       }
       ,
       merchantAdd(){
-        this.$router.push('/merchantAdd')
+        this.$router.push('/merchantHome')
       },
       callCategory(i){
        window.console.log(i)
-      //  this.$store.dispatch('categoryId',i+1)
-      this.$store.state.categoryId=i+1
+       this.$store.dispatch('category',i+1)
+      
+      // this.$store.state.categoryId=i+1
+      if(this.$router.currentRoute !=='/categoryView')
         this.$router.push('/categoryView')
       }
     }

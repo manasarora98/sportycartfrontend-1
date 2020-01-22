@@ -3,7 +3,7 @@
 <v-layout row wrap>
 
 
-    <v-flex xs12 md6 px-2 mb-4 v-for="product in products" :key="product">
+    <v-flex xs12 md6 px-2 mb-4 v-for="(product,index) in products" :key="index">
             <v-card color="blue-grey lighten-2" class="white--text" @click="description(product)">
               <v-layout row>
                 <v-flex xs4 md4>
