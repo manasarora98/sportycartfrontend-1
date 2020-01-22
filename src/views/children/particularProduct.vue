@@ -56,6 +56,7 @@
      }
      ,
      addStock(){
+       this.$store.state.merchantProduct=this.product
        this.$router.push('/AddStock')
      }
   

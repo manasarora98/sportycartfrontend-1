@@ -9,9 +9,10 @@ const store = new Vuex.Store({
   state: {
     product: '',
     searchString:'',
-    // categoryId:'',
+   merchantProduct:'',
     searchResult:[],
-    category:[]
+    category:[],
+
     
   },
   getters:{

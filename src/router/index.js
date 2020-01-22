@@ -20,10 +20,7 @@ const routes = [
       path:'/productDescription',
       component: () => import('../views/children/productDescription.vue') 
     },
-    {
-      path:'/updateProduct',
-      component: () => import('../views/children/updateProductMerchant.vue') 
-    },
+    
     {
       path:'/merchantHome',
       component: () => import('../views/children/merchantHome.vue') 
@@ -55,6 +52,10 @@ const routes = [
     {
       path:'/AddStock',
       component: () => import('../views/children/AddStock.vue') 
+    },
+    {
+      path:'/updateProduct',
+      component: () => import('../views/children/updateProduct.vue') 
     }
     
     ]

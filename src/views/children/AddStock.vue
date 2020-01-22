@@ -4,7 +4,7 @@
     <!-- <i style="font-size:50px" class="fa">&#xf2bc;</i>
     <h3> Marchant Name:</h3>     -->
     <table style="width:100%">
-    <caption> <strong style="color:#ff6666">UPDATE PRODUCT</strong></caption>
+    <caption> <strong style="color:#ff6666">ADDPRODUCT</strong></caption>
   <tr>
     
     <th>Price</th>
@@ -12,15 +12,39 @@
   </tr>
   <tr>
     
-    <td><input type="Number"/></td>
-    <td><input type="number"></td>
+    <td><input v-model="price" type="number"/></td>
+    <td><input  v-model="stock" type="number"></td>
   </tr>
-</table><v-btn style="background-color:#1D87DA" >Update</v-btn>
+</table>
+<br>
+<v-btn style="background-color:#1D87DA"  @click="update">Add</v-btn>
     </div>
 </template>
 <script>
+import axios from 'axios'
 export default {
-    
+    data: () => ({
+        count:0,
+      price:'',
+      stock:''
+      
+    }),
+    methods:{
+      async  update(){
+          if(this.count<2){
+          this.count=this.count+1;
+          
+      const resp = await axios.post(`http://172.16.20.131:8085/productList/addProduct`,{
+       productId:this.$store.state.merchantProduct.productId,
+       merchantId:10,
+       stock:this.stock,
+       price:this.price
+      })
+      window.alert("added")
+      window.console.log(resp)
+        }
+      }
+    }
 }
 </script>
 <style scoped>
