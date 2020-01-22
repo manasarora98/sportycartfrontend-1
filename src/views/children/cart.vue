@@ -17,9 +17,9 @@
                 <v-flex xs7>
                   <v-card-title primary-title>
                     <div>
-                         <div>{{product.description}}</div>
-                         <h5>{{product.name}}</h5>
-                         <h5>{{products_cart[i].price}}</h5>
+                         <!-- <div>{{product.description}}</div> -->
+                         <h2>Name:{{product.name}}</h2>
+                         <h3>Price:{{products_cart[i].price}}</h3>
                     </div>
                   </v-card-title>
                 </v-flex>
@@ -42,6 +42,9 @@
 
 
                 </v-layout>
+                <v-layout justify-center >
+                  <v-btn style="background-color:#1ac465"> CHECKOUT</v-btn>
+                  </v-layout>
                 </v-container>
 </template>
 

@@ -52,7 +52,7 @@
      <v-btn  style="margin-left:10px;background-color:green;" >
         Log/reg
       </v-btn>
-      <v-btn  style="background-color:green;"  @click="merchantAdd">
+      <v-btn  style="background-color:green;margin-left:20px"  @click="merchantAdd">
         MER/reg
       </v-btn>
      

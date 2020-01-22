@@ -18,7 +18,7 @@
                   <v-card-title primary-title>
                     <div>
                         <h2>Description</h2>
-                         <p>product.description</p>
+                         <p>{{product.description}}</p>
                     </div>
                 
                     
