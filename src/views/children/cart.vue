@@ -66,9 +66,17 @@
       window.console.log(resp);
       },
       async removeProduct(i){
-          this.products_cart[i].quantity=this.products_cart[i].quantity-1
+          
+          if(this.products_cart[i].quantity>0){
+            this.products_cart[i].quantity=this.products_cart[i].quantity-1
           const resp = await axios.get(`http://172.16.20.131:8087/cart/cartIncrement/${this.products_details[i].productId}/${localStorage.getItem("temporaryId")}/${this.products_cart[i].quantity}`);
           window.console.log(resp);
+          }
+          if(this.products_cart[i].quantity==0){
+            const resp = await axios.get(`http://172.16.20.131:8087/cart/deleteCartRow/${localStorage.getItem("temporaryId")}/${this.products_cart[i].merchantId}/${this.products_details[i].productId}`);
+          window.console.log(resp);
+          }
+          
       }
     
   

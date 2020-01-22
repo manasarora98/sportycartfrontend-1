@@ -20,10 +20,7 @@ const routes = [
       path:'/productDescription',
       component: () => import('../views/children/productDescription.vue') 
     },
-    {
-      path:'/updateProduct',
-      component: () => import('../views/children/updateProductMerchant.vue') 
-    },
+    
     {
       path:'/merchantHome',
       component: () => import('../views/children/merchantHome.vue') 
@@ -43,8 +40,23 @@ const routes = [
     {
       path:'/categoryView',
       component: () => import('../views/children/category.vue') 
+    },
+    {
+      path:'/particularProduct',
+      component: () => import('../views/children/particularProduct.vue') 
+    },
+    {
+      path:'/createNewProduct',
+      component: () => import('../views/children/createNewProduct.vue') 
+    },
+    {
+      path:'/AddStock',
+      component: () => import('../views/children/AddStock.vue') 
+    },
+    {
+      path:'/updateProduct',
+      component: () => import('../views/children/updateProduct.vue') 
     }
-    
     
     ]
   }

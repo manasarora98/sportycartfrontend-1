@@ -3,8 +3,13 @@
 <v-layout row wrap>
 
 
+<<<<<<< HEAD
     <v-flex xs12 md4 px-2 mb-4 v-for="product in products" :key="product">
             <v-card color="blue lighten-5" class="white--text" @click="description(product)">
+=======
+    <v-flex xs12 md4 px-2 mb-4 v-for="product in getSearchResult" :key="product">
+            <v-card color="blue-grey lighten-2" class="white--text" @click="description(product)">
+>>>>>>> b1944a2bceb5ff822b2c8cdd96be9e344783219a
               <v-layout row>
                 <v-flex xs7 md4>
                      <v-img :src="product.imageUrl"
@@ -42,14 +47,15 @@
 </template>
 
 <script>
-  import axios from 'axios'
-  
+  // import axios from 'axios'
+  import {mapGetters} from 'vuex'
   export default {
     components: {
       
     },
     data() {
       return {
+
        products:[]
       }
     },
@@ -66,7 +72,8 @@
     search() {
       let search = this.$store.getters.searchString;
       return search;
-    }
+    },
+    ...mapGetters(['getSearchResult'])
     }
     ,
     // watch:{
@@ -77,20 +84,20 @@
     //   }
     // }
     // },
-    async created() {
-      try {
-      window.console.log(this.$store.state.searchString)
-      const resp = await axios.get(`http://172.16.20.131:8089/search/${this.search}`);
-    // const resp = await axios.get(`http://localhost:8082/searchService/search/Nike/${this.$store.state.searchString}`)
+    // async created() {
+    //   try {
+    //   window.console.log(this.$store.state.searchString)
+    //   const resp = await axios.get(`http://172.16.20.131:8089/search/${this.search}`);
+    // // const resp = await axios.get(`http://localhost:8082/searchService/search/Nike/${this.$store.state.searchString}`)
 
-      window.console.log(resp)
+    //   window.console.log(resp)
   
-     this.products = [...resp.data];
-     window.console.log(this.products)
-      } catch (e) {
-        window.console.log(e);
-      }
-    }
+    //  this.products = [...resp.data];
+    //  window.console.log(this.products)
+    //   } catch (e) {
+    //     window.console.log(e);
+    //   }
+    // }
   }
 
 </script>
