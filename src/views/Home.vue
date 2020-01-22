@@ -1,16 +1,16 @@
 <template>
   <v-app id="inspire">
-    <v-navigation-drawer
+    <v-navigation-drawer style="background-color:#1565c0"
       v-model="drawer"
       :clipped="$vuetify.breakpoint.lgAndUp"
       app
     >
-      <h2><strong>Categories</strong></h2> 
-      <br>
+      <h2><strong style="color:white">CATEGORIES</strong></h2> 
+      <hr>
        <v-list >
         <template v-for="(item,i) in categories " >
           
-            <p :key="i"   @click="callCategory(i)"><a ><strong>{{item}}</strong></a></p>
+          <p style="text-transform: uppercase;" :key="i"   @click="callCategory(i)"><a ><strong  style="color:white">{{item}}</strong></a></p>
                 
                  
              </template>
@@ -29,7 +29,10 @@
         style="width: 300px"
         class="ml-0 pl-4"
       >
-        <span class="hidden-sm-and-down">SportyCart</span>
+      
+        <!-- <img src="../assets/SportyLogo.png" style="width:70px;height:70px;border-radius:10px;"/> -->
+        <span class="hidden-sm-and-down" style="margin-bottom:100px;">SportyCart</span>
+      
       </v-toolbar-title>
       <v-text-field
       v-model="searchString"
@@ -50,10 +53,10 @@
         Cart
       </v-btn>
      <v-btn  style="margin-left:10px;background-color:green;" >
-        Log/reg
+        User
       </v-btn>
-      <v-btn  style="background-color:green;"  @click="merchantAdd">
-        MER/reg
+      <v-btn  style="background-color:green;margin-left:px;margin-left:10px;"  @click="merchantAdd">
+        Seller
       </v-btn>
      
       

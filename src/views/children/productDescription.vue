@@ -4,11 +4,11 @@
 
 
     <v-flex xs12 md12 px-2 mb-4 >
-            <v-card color="blue-grey lighten-2" class="white--text" >
+            <v-card color="blue lighten-5" class="white--text" >
               <v-layout row>
                 <v-flex xs4 md4>
                   
-                 <v-img :src="product.imageUrl"
+                 <v-img style="margin:50px;" :src="product.imageUrl"
               aspect-ratio="1"
               class="grey lighten-2"
                max-width="350"
@@ -20,18 +20,18 @@
                 <v-flex xs7>
                   <v-card-title primary-title>
                     <div>
-                        <h2>Description</h2>
-                         <p>{{product.description}}</p>
+                        <h2 style="color:black;text-transform:capitalize;">Description</h2>
+                         <p style="color:black;text-transform:capitalize;">{{product.description}}</p>
                     </div>
                 
                     
                   </v-card-title>
-                  <h2>Attributes</h2>
-                  <p v-for="(attribute,value) in product.productAttributes" :key="value">{{value}}:{{attribute}}</p>
+                  <h2 style="color:black;text-transform:capitalize;">Attributes</h2>
+                  <p style=" color:black;text-transform:capitalize;" v-for="(attribute,value) in product.productAttributes" :key="value">{{value}}:{{attribute}}</p>
                 </v-flex>
               </v-layout>
               <v-card-actions>
-                   <div  ><h4>{{product.name}}</h4></div>
+                   <div><h4 style="color:black;text-transform:capitalize;">{{product.name}}</h4></div>
                 <v-spacer></v-spacer>
                
 
@@ -44,12 +44,12 @@
 
 
     <v-flex xs12 md4 px-2 mb-4 v-for="(merchant,i) in merchants" :key="i">
-            <v-card color="blue-grey lighten-2" class="white--text" @click="description(product)">
+            <v-card color="blue lighten-5" class="white--text" @click="description(product)">
               <v-layout row>
         
                 <v-flex xs7>
                   <v-card-title primary-title>
-                    <div>
+                    <div style="color:black;text-transform:capitalize;">
                           <p>Merchant:{{i+1}}</p>
                          <p>STOCK  :   {{merchant.stock}}</p>
                          <h4>PRICE  :  {{merchant.price}}</h4>
@@ -67,13 +67,6 @@
 
             </v-card>
     </v-flex>
-
-
-
-
-                
-
-
                 </v-layout>
                 </template>
 

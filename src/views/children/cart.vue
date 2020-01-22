@@ -4,7 +4,7 @@
 
 
     <v-flex xs12  px-2 mb-4  md6  v-for=" (product,i) in products_details"  :key="i" >
-            <v-card color="blue-grey lighten-2" class="white--text" >
+            <v-card color="blue lighten-5" class="white--text" >
               <v-layout row>
                 <v-flex xs4 md4>
                 <v-img :src="product.imageUrl"
@@ -17,9 +17,9 @@
                 <v-flex xs7>
                   <v-card-title primary-title>
                     <div>
-                         <div>{{product.description}}</div>
-                         <h5>{{product.name}}</h5>
-                         <h5>{{products_cart[i].price}}</h5>
+                         <div style="color:black;text-transform:capitalize;">{{product.description}}</div>
+                         <h5 style="color:black;text-transform:capitalize;">{{product.name}}</h5>
+                         <h5 style="color:black;text-transform:capitalize;">{{products_cart[i].price}}</h5>
                     </div>
                   </v-card-title>
                 </v-flex>
@@ -29,7 +29,7 @@
                 <v-spacer></v-spacer>
               
                 <v-btn flat color="blue" @click="addProduct(i)">Add</v-btn>
-                 <input type="text" style="width:10%;background-color:white;color:blue"   v-model="products_cart[i].quantity" required/>
+                 <input type="text" style="width:10%;background-color:white;color:black;text-align:center;"   v-model="products_cart[i].quantity" required/>
                 <v-btn flat color="blue" @click="removeProduct(i)">Remove</v-btn>
 
               </v-card-actions>
