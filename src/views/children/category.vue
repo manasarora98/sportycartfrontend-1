@@ -3,11 +3,11 @@
 <v-layout row wrap>
 
 
-    <v-flex xs12 md4 px-2 mb-4 v-for="(product,index) in getCategory" :key="index">
-            <v-card color="blue-grey lighten-2" class="white--text" @click="description(product)">
+    <v-flex xs12 md6 px-2 mb-4 v-for="(product,index) in getCategory" :key="index">
+            <v-card color="blue lighten-5" class="white--text" @click="description(product)">
               <v-layout row>
-                <v-flex xs4 md4>
-                       <v-img :src="product.imageUrl"
+                <v-flex xs7 md4>
+                       <v-img style="margin:20px;" :src="product.imageUrl"
               aspect-ratio="1"
               class="grey lighten-2"
                max-width="350"
@@ -18,13 +18,14 @@
                 <v-flex xs7>
                   <v-card-title primary-title>
                     <div>
-                         <div>{{product.description}}</div>
+                      <h3 style="color:black;">PRICE</h3>
+                         <!-- <div style="color:black;text-transform:capitalize;">{{product.description}}</div> -->
                     </div>
                   </v-card-title>
                 </v-flex>
               </v-layout>
               <v-card-actions>
-                   <div  ><h4>{{product.name}}</h4></div>
+                   <div  ><h4 style="color:black">{{product.name}}</h4></div>
                 <v-spacer></v-spacer>
                 <v-btn flat color="blue">Add To Cart</v-btn>
 

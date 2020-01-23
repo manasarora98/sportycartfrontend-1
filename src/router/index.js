@@ -20,7 +20,12 @@ const routes = [
       path:'/productDescription',
       component: () => import('../views/children/productDescription.vue') 
     },
-    
+    // should change the below line
+    {
+      path:'/merchantHome',
+      component: () => import('../views/children/UserRegister.vue') 
+    },
+
     {
       path:'/merchantHome',
       component: () => import('../views/children/merchantHome.vue') 

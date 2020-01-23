@@ -44,18 +44,18 @@
         class="hidden-sm-and-down"
         
       />
-       <v-btn  style="margin-left:10px;background-color:green;" @click="searchFunc">
+       <v-btn  style="margin-left:10px;background-color:#0066cc;" @click="searchFunc">
         Search
       </v-btn>
       <v-spacer />
       
- <v-btn  style="margin-left:10px;background-color:green;" @click="cart" >
+ <v-btn  style="margin-left:10px;background-color:#0066cc;" @click="cart" >
         Cart
       </v-btn>
-     <v-btn  style="margin-left:10px;background-color:green;" >
+     <v-btn  style="margin-left:10px;background-color:#0066cc;" >
         User
       </v-btn>
-      <v-btn  style="background-color:green;margin-left:px;margin-left:10px;"  @click="merchantAdd">
+      <v-btn  style="background-color:#0066cc;margin-left:px;margin-left:10px;"  @click="merchantAdd">
         Seller
       </v-btn>
      

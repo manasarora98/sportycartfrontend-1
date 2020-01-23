@@ -2,7 +2,7 @@
 <div class="merchantsection">
 
 <h3> Merchant Home</h3>
-<br>
+<hr>
 <button type="button" style="border:3px solid green" @click="addProduct"><strong>ADD PRODUCT</strong></button><br><br>
 <button type="button" style="border:3px solid green" @click="updateProduct"><strong>UPDATE PRODUCT</strong></button><br><br>
 <!-- <button type="button" style="border:3px solid green"><strong>SALES</strong></button><br><br> -->
@@ -30,6 +30,7 @@ export default {
 </script>
 <style scoped>
 .merchantsection{
+    float:left;
      margin: 10px 0px 0px 300px;
   width: 256px;
   height:350px;
@@ -37,6 +38,9 @@ export default {
 }
 a{
     text-decoration: none;
+}
+hr{
+    border:20 solid crimson
 }
 
 
