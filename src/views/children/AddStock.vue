@@ -1,8 +1,7 @@
 <template>
     
    <div class="updateproduct">
-    <!-- <i style="font-size:50px" class="fa">&#xf2bc;</i>
-    <h3> Marchant Name:</h3>     -->
+    
     <table style="width:100%">
     <caption> <strong style="color:#ff6666">ADDPRODUCT</strong></caption>
   <tr>
@@ -34,7 +33,7 @@ export default {
           if(this.count<2){
           this.count=this.count+1;
           
-      const resp = await axios.post(`http://172.16.20.131:8085/productList/addProduct`,{
+      const resp = await axios.post(`http://172.16.20.131:8082/merchantService/productList/addProduct`,{
        productId:this.$store.state.merchantProduct.productId,
        merchantId:10,
        stock:this.stock,

@@ -62,7 +62,7 @@
      async category(){
           this.categorye=document.getElementById("mySelect").selectedIndex;
           window.console.log(this.category)
-           const resp = await axios.get(`http://172.16.20.131:8086/product/showProducts/${this.categorye}`)
+           const resp = await axios.get(`http://172.16.20.131:8082/productService/product/showProducts/${this.categorye}`)
   this.products=[...resp.data]
   window.console.log()
       },

@@ -42,7 +42,7 @@
 this.productid=document.getElementById("mySelect5").selectedIndex-1;
         },
         async updat(){
-            const resp=await axios.post(`http://172.16.20.131:8085/productList/updateProduct`,{
+            const resp=await axios.post(`http://172.16.20.131:8082/merchantService/productList/updateProduct`,{
                 productId:this.products[this.productid].productId,
                 merchantId:8,
                 stock:this.stock,
@@ -54,7 +54,7 @@ this.productid=document.getElementById("mySelect5").selectedIndex-1;
      
     },
    async created(){
- const resp = await axios.get(`http://172.16.20.131:8085/productList/getProductNames/8`)
+ const resp = await axios.get(`http://172.16.20.131:8082/merchantService/productList/getProductNames/8`)
   this.products=[...resp.data]
   window.console.log(resp)
     }

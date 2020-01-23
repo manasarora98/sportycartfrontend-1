@@ -78,7 +78,7 @@ window.console.log("hi from mukul")
             obj["price"]=this.price,
             obj["stock"]=this.stock,
                window.console.log(obj)
-        const resp = await axios.post(`http://172.16.20.131:8086/product/createProduct`,
+        const resp = await axios.post(`http://172.16.20.131:8082/productService/product/createProduct`,
         obj)
         window.console.log(resp)
         }}

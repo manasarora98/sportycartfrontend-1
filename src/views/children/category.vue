@@ -64,7 +64,7 @@
       
       // const resp = await axios.get(`http://172.16.20.131:8086/product/getAllProducts`);
     // const resp = await axios.get(`http://localhost:8082/productService/product/showProducts/${this.$store.getters.categoryId}`)
-    const resp = await axios.get(`http://172.16.20.131:8086/product/showProducts/${this.$store.getters.categoryId}`)
+    const resp = await axios.get(`http://172.16.20.131:8082/productService/product/showProducts/${this.$store.getters.categoryId}`)
 
       window.console.log(resp)
    

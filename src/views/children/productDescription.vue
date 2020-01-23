@@ -116,7 +116,7 @@
            { let valu = this.rand(100,1);
         localStorage.setItem('temporaryId', valu)
            }
-        const resp = await axios.post(`http://172.16.20.131:8087/cart/addToCart`,{
+        const resp = await axios.post(`http://172.16.20.131:8082/orderService/cart/addToCart`,{
             userId:localStorage.getItem("temporaryId"),
             merchantId:mid,
             quantity:1,

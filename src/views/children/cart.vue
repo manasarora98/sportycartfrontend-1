@@ -43,7 +43,7 @@
 
                 </v-layout>
                 <v-layout justify-center >
-                  <v-btn style="background-color:#1ac465"> CHECKOUT</v-btn>
+                  <v-btn style="background-color:#1ac465" @click="callCheckout"> CHECKOUT</v-btn>
                   </v-layout>
                 </v-container>
 </template>
@@ -65,18 +65,18 @@
     methods: {
       async addProduct(i){
           this.products_cart[i].quantity=this.products_cart[i].quantity+1
-      const resp = await axios.get(`http://172.16.20.131:8087/cart/cartIncrement/${this.products_details[i].productId}/${localStorage.getItem("temporaryId")}/${this.products_cart[i].quantity}`);
+      const resp = await axios.get(`http://172.16.20.131:8082/orderService/cart/cartIncrement/${this.products_details[i].productId}/${localStorage.getItem("temporaryId")}/${this.products_cart[i].quantity}`);
       window.console.log(resp);
       },
       async removeProduct(i){
           
           if(this.products_cart[i].quantity>0){
             this.products_cart[i].quantity=this.products_cart[i].quantity-1
-          const resp = await axios.get(`http://172.16.20.131:8087/cart/cartIncrement/${this.products_details[i].productId}/${localStorage.getItem("temporaryId")}/${this.products_cart[i].quantity}`);
+          const resp = await axios.get(`http://172.16.20.131:8082/orderService/cart/cartIncrement/${this.products_details[i].productId}/${localStorage.getItem("temporaryId")}/${this.products_cart[i].quantity}`);
           window.console.log(resp);
           }
           if(this.products_cart[i].quantity==0){
-            const resp = await axios.get(`http://172.16.20.131:8087/cart/deleteCartRow/${localStorage.getItem("temporaryId")}/${this.products_cart[i].merchantId}/${this.products_details[i].productId}`);
+            const resp = await axios.get(`http://172.16.20.131:8082/orderService/cart/deleteCartRow/${localStorage.getItem("temporaryId")}/${this.products_cart[i].merchantId}/${this.products_details[i].productId}`);
           window.console.log(resp);
           }
           
@@ -91,12 +91,12 @@
         //then fetch the cart of logedIn user
         //if not logedin fetch cart with temporary id
         window.console.log(localStorage.getItem("temporaryId"))
-      const resp = await axios.get(`http://172.16.20.131:8087/cart/getCart/${localStorage.getItem("temporaryId")}`);
+      const resp = await axios.get(`http://172.16.20.131:8082/orderService/cart/getCart/${localStorage.getItem("temporaryId")}`);
        this.products_cart=[...resp.data]
        this.products_cart.forEach(element => {
            this.product_ids.push(element.productId);
        });
-       const resp1 = await axios.post(`http://172.16.20.131:8086/product/getProductsByIds`,{
+       const resp1 = await axios.post(`http://172.16.20.131:8082/productService/product/getProductsByIds`,{
            productIds:this.product_ids
          
        })
@@ -104,7 +104,7 @@
          window.console.log(resp)
          window.console.log(this.product_ids)
            window.console.log(resp1)
-     //sort the reponse based on merchant rating
+        
        
      
       } catch (e) {
