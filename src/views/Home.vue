@@ -29,7 +29,7 @@
         style="width: 300px"
         class="ml-0 pl-4"
       >
-        <span class="hidden-sm-and-down">SportyCart</span>
+        <span class="hidden-sm-and-down" @click="home()">SportyCart</span>
       </v-toolbar-title>
       <v-text-field
       v-model="searchString"
@@ -49,11 +49,20 @@
  <v-btn  style="margin-left:10px;background-color:green;" @click="cart" >
         Cart
       </v-btn>
-     <v-btn  style="margin-left:10px;background-color:green;" >
+     <v-btn  style="margin-left:10px;background-color:green;" @click="login" v-if="!getFlag">
         Log/reg
       </v-btn>
       <v-btn  style="background-color:green;margin-left:20px"  @click="merchantAdd">
-        MER/reg
+        Merchant
+      </v-btn>
+       <v-btn  style="background-color:green;margin-left:20px" v-if="getFlag"  >
+       OrdLog
+      </v-btn>
+       <v-btn  style="background-color:green;margin-left:20px" v-if="getFlag" >
+        LoginLog
+      </v-btn>
+      <v-btn  style="background-color:green;margin-left:20px" @click="logout"  v-if="getFlag" >
+        Logout
       </v-btn>
      
       
@@ -107,6 +116,7 @@
 </template>
 
 <script>
+import {mapGetters} from 'vuex'
   export default {
     props: {
       source: String,
@@ -116,6 +126,7 @@
        'merchandise','cricket','fitness','badminton','tennis'
       ],
       searchString:'',
+     
       dialog: false,
       drawer: null,
       items: [
@@ -151,6 +162,9 @@
         { icon: 'mdi-keyboard', text: 'Go to the old version' },
       ],
     }),
+    computed:{
+      ...mapGetters(['getFlag'])
+    },
     methods:{
       searchFunc(){
        this.$store.dispatch('search',this.searchString)
@@ -164,6 +178,13 @@ this.$router.push('/cart')
       merchantAdd(){
         this.$router.push('/merchantHome')
       },
+      login(){this.$router.push('/login')},
+      logout(){
+        localStorage.clear()
+        this.$store.commit('setFlag',false)
+        this.$router.push('/')
+        },
+      home(){this.$router.push('/')},
       callCategory(i){
        window.console.log(i)
        this.$store.dispatch('category',i+1)

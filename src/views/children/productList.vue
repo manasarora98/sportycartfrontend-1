@@ -26,7 +26,7 @@
               <v-card-actions>
                    <div  ><h4>{{product.name}}</h4></div>
                 <v-spacer></v-spacer>
-                <v-btn flat color="blue">Add To Cart</v-btn>
+                <v-btn  color="blue">Add To Cart</v-btn>
 
               </v-card-actions>
             
@@ -54,6 +54,9 @@
       }
     },
     methods: {
+      //  handleScroll (event) {
+      
+  //   }
      description(product){
      this.$store.state.product=product
      window.console.log(this.$store.state.product)
@@ -63,8 +66,8 @@
     },
     async created() {
       try {
-      
-      const resp = await axios.get(`http://172.16.20.131:8082/productService/product/getAllProducts`);
+       // window.addEventListener('scroll', this.handleScroll);
+      const resp = await axios.get(`http://172.16.20.131:8082/product-service/product/getAllProducts`);
     // const resp = await axios.get(`http://localhost:8082/productService/product/getAllProducts`)
 
       window.console.log(resp)

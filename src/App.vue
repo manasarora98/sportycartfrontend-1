@@ -5,6 +5,20 @@
   </div>
 </template>
 
+<script>
+export default {
+  created () {
+    if (localStorage.getItem('userId')) {
+      this.$store.commit('setFlag', true)
+      this.$router.push('/')
+    } else {
+      this.$router.push('/')
+    }
+  }
+}
+</script>
+
+
 <style lang="scss">
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;

@@ -33,7 +33,7 @@ export default {
           if(this.count<2){
           this.count=this.count+1;
           
-      const resp = await axios.post(`http://172.16.20.131:8082/merchantService/productList/addProduct`,{
+      const resp = await axios.post(`http://172.16.20.131:8082/merchant-service/productList/addProduct`,{
        productId:this.$store.state.merchantProduct.productId,
        merchantId:10,
        stock:this.stock,

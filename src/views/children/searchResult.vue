@@ -3,7 +3,7 @@
 <v-layout row wrap>
 
 
-    <v-flex xs12 md4 px-2 mb-4 v-for="product in getSearchResult" :key="product">
+    <v-flex xs12 md4 px-2 mb-4 v-for="(product, index) in getSearchResult" :key="index">
             <v-card color="blue-grey lighten-2" class="white--text" @click="description(product)">
               <v-layout row>
                 <v-flex xs4 md4>
@@ -26,7 +26,7 @@
               <v-card-actions>
                    <div  ><h4>{{product.name}}</h4></div>
                 <v-spacer></v-spacer>
-                <v-btn flat color="blue">Add To Cart</v-btn>
+                <v-btn  color="blue">Add To Cart</v-btn>
 
               </v-card-actions>
             
@@ -71,28 +71,7 @@
     ...mapGetters(['getSearchResult'])
     }
     ,
-    // watch:{
-    // search: {
-    //   handler: function(search) {
-    //     this.created();
-        
-    //   }
-    // }
-    // },
-    // async created() {
-    //   try {
-    //   window.console.log(this.$store.state.searchString)
-    //   const resp = await axios.get(`http://172.16.20.131:8089/search/${this.search}`);
-    // // const resp = await axios.get(`http://localhost:8082/searchService/search/Nike/${this.$store.state.searchString}`)
-
-    //   window.console.log(resp)
-  
-    //  this.products = [...resp.data];
-    //  window.console.log(this.products)
-    //   } catch (e) {
-    //     window.console.log(e);
-    //   }
-    // }
+    
   }
 
 </script>

@@ -42,7 +42,7 @@
 </template>
 
 <script>
-  import axios from 'axios'
+  // import axios from 'axios'
   import {mapGetters} from 'vuex'
   
   export default {
@@ -55,25 +55,34 @@
       }
     },
     methods: {
-   
+  //  handleScroll (event) {
+      
+  //   }
      
     },
   
     async created() {
-      try {
-      
+      // try {
+      // window.addEventListener('scroll', this.handleScroll);
+      // const params={
+      //   pageSize:5,
+      //   pageNo:0
+      // }
       // const resp = await axios.get(`http://172.16.20.131:8086/product/getAllProducts`);
     // const resp = await axios.get(`http://localhost:8082/productService/product/showProducts/${this.$store.getters.categoryId}`)
-    const resp = await axios.get(`http://172.16.20.131:8082/productService/product/showProducts/${this.$store.getters.categoryId}`)
+    // const resp = await axios.get(`http://172.16.20.131:8082/product-service/product/showProducts/${this.$store.getters.categoryId}`,{params})
 
-      window.console.log(resp)
+    //   window.console.log(resp)
    
-     this.products = [...resp.data];
-     window.console.log(this.products)
-      } catch (e) {
-        window.console.log(e);
-      }
+    //  this.products = [...resp.data];
+    //  window.console.log(this.products)
+      // } catch (e) {
+      //   window.console.log(e);
+      // }
     },
+    destroyed () {
+    window.removeEventListener('scroll', this.handleScroll);
+  },
     computed: {
           
    ...mapGetters(['getCategory'])

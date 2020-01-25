@@ -20,6 +20,7 @@
                          <!-- <div>{{product.description}}</div> -->
                          <h2>Name:{{product.name}}</h2>
                          <h3>Price:{{products_cart[i].price}}</h3>
+                         
                     </div>
                   </v-card-title>
                 </v-flex>
@@ -43,7 +44,7 @@
 
                 </v-layout>
                 <v-layout justify-center >
-                  <v-btn style="background-color:#1ac465" @click="callCheckout"> CHECKOUT</v-btn>
+                  <v-btn style="background-color:#40883c" @click="callCheckout"> CHECKOUT</v-btn>
                   </v-layout>
                 </v-container>
 </template>
@@ -59,27 +60,39 @@
       return {
         products_cart:[],
         products_details:[],
-        product_ids:[]
+        product_ids:[],
+        USERID:''
       }
     },
     methods: {
       async addProduct(i){
+        
           this.products_cart[i].quantity=this.products_cart[i].quantity+1
-      const resp = await axios.get(`http://172.16.20.131:8082/orderService/cart/cartIncrement/${this.products_details[i].productId}/${localStorage.getItem("temporaryId")}/${this.products_cart[i].quantity}`);
+      const resp = await axios.get(`http://172.16.20.131:8082/order-service/cart/cartIncrement/${this.products_details[i].productId}/${this.USERID}/${this.products_cart[i].quantity}/${this.products_cart[i].merchantId}`);
       window.console.log(resp);
       },
       async removeProduct(i){
           
           if(this.products_cart[i].quantity>0){
             this.products_cart[i].quantity=this.products_cart[i].quantity-1
-          const resp = await axios.get(`http://172.16.20.131:8082/orderService/cart/cartIncrement/${this.products_details[i].productId}/${localStorage.getItem("temporaryId")}/${this.products_cart[i].quantity}`);
+          const resp = await axios.get(`http://172.16.20.131:8082/order-service/cart/cartIncrement/${this.products_details[i].productId}/${this.USERID}/${this.products_cart[i].quantity}/${this.products_cart[i].merchantId}`);
           window.console.log(resp);
           }
           if(this.products_cart[i].quantity==0){
-            const resp = await axios.get(`http://172.16.20.131:8082/orderService/cart/deleteCartRow/${localStorage.getItem("temporaryId")}/${this.products_cart[i].merchantId}/${this.products_details[i].productId}`);
+            const resp = await axios.get(`http://172.16.20.131:8082/order-service/cart/deleteCartRow/${this.USERID}/${this.products_cart[i].merchantId}/${this.products_details[i].productId}`);
           window.console.log(resp);
           }
           
+      },
+      callCheckout(){
+        if(localStorage.getItem('userId')){
+        this.$store.state.product_cart=this.products_cart
+        this.$store.state. product_details=this.products_details
+        this.$router.push('/checkout')
+        }
+        else{
+          this.$router.push('/login')
+        }
       }
     
   
@@ -88,15 +101,20 @@
     async created() {
       try {
         //if login then first replace the temporary id in database with userid
+        if(localStorage.getItem('userId'))
+        this.USERID=localStorage.getItem('userId')
+        else
+        this.USERID=localStorage.getItem('temporaryId')
+        
         //then fetch the cart of logedIn user
         //if not logedin fetch cart with temporary id
         window.console.log(localStorage.getItem("temporaryId"))
-      const resp = await axios.get(`http://172.16.20.131:8082/orderService/cart/getCart/${localStorage.getItem("temporaryId")}`);
+      const resp = await axios.get(`http://172.16.20.131:8082/order-service/cart/getCart/${this.USERID}`);
        this.products_cart=[...resp.data]
        this.products_cart.forEach(element => {
            this.product_ids.push(element.productId);
        });
-       const resp1 = await axios.post(`http://172.16.20.131:8082/productService/product/getProductsByIds`,{
+       const resp1 = await axios.post(`http://172.16.20.131:8082/product-service/product/getProductsByIds`,{
            productIds:this.product_ids
          
        })

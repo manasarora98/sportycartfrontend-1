@@ -58,8 +58,12 @@ const routes = [
       component: () => import('../views/children/updateProduct.vue') 
     },
     {
-      path:'/checkout.vue',
+      path:'/checkout',
       component: () => import('../views/children/checkout.vue') 
+    },
+    {
+      path:'/orderDetails',
+      component: () =>  import('../views/children/orderDetails.vue') 
     }
     
     ]
@@ -68,6 +72,11 @@ const routes = [
     path: '/login',
     name: 'login',
     component: () => import('../views/login.vue')
+  },
+  {
+    path: '/signUpUser',
+    name: 'signUp',
+    component: () => import('../views/signUpUser.vue')
   }
   
 ]

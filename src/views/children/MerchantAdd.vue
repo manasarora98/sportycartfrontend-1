@@ -62,8 +62,12 @@
      async category(){
           this.categorye=document.getElementById("mySelect").selectedIndex;
           window.console.log(this.category)
-           const resp = await axios.get(`http://172.16.20.131:8082/productService/product/showProducts/${this.categorye}`)
-  this.products=[...resp.data]
+          const params={
+            pageSize:50,
+            pageNo:0
+          }
+           const resp = await axios.get(`http://172.16.20.131:8082/product-service/product/showProducts/${this.categorye}`,{params})
+  this.products=[...resp.data.content]
   window.console.log()
       },
       selectProduct(){

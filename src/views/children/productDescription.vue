@@ -88,7 +88,8 @@
     data() {
       return {
        product:'',
-       merchants:[]
+       merchants:[],
+       USERID:'',
       }
     },
     methods: {
@@ -110,14 +111,19 @@
     async addToCart(mid,pid,price){
          window.console.log(mid)
          window.console.log("inside")
-        
-          
+        if(localStorage.getItem('userId'))
+          this.USERID=localStorage.getItem('userId')
+          else{
            if(!localStorage.getItem("temporaryId"))
            { let valu = this.rand(100,1);
         localStorage.setItem('temporaryId', valu)
+        this.USERID=valu
            }
-        const resp = await axios.post(`http://172.16.20.131:8082/orderService/cart/addToCart`,{
-            userId:localStorage.getItem("temporaryId"),
+          }
+        const resp = await axios.post(`http://172.16.20.131:8082/order-service/cart/addToCart`,{
+            userId:this.USERID,
+
+
             merchantId:mid,
             quantity:1,
             price:price,
@@ -133,7 +139,7 @@
     async created() {
       try {
       this.product=this.$store.state.product
-      const resp = await axios.get(`http://172.16.20.131:8085/productList/getProductList/${this.product.productId}`);
+      const resp = await axios.get(`http://172.16.20.131:8082/merchant-service/productList/getProductList/${this.product.productId}`);
      
      //sort the reponse based on merchant rating
      this.merchants = [...resp.data];
