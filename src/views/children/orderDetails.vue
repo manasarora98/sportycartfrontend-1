@@ -38,7 +38,9 @@
 
 
                 </v-layout>
-             
+             <v-layout justify-center >
+                  <v-btn style="background-color:#40883c" @click="home">Continue Shopping</v-btn>
+                  </v-layout>
                
                 </v-container>
 </template>
@@ -60,12 +62,9 @@
       }
     },
     methods: {
-      
-    
-      
-    
-    
-  
+      home(){
+        this.$router.push('/')
+      } 
     },
     
     created(){

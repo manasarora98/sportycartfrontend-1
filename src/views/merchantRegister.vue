@@ -3,7 +3,7 @@
   <div class="container">
     <div>
     <!-- <h1 style="font-family:cursive;color:#0066cc"><b>Register</b></h1> -->
-    <p style="color:#0066cc"><b>Please fill in this form to create an <span style="font-size:20px;">User</span> account.</b></p>
+    <p style="color:#0066cc"><b>Please fill in this form to create an <span style="font-size:20px;">Merchant</span> account.</b></p>
     </div>
     <hr>
      <v-form  ref="signForm" lazy-validation> 
@@ -17,9 +17,6 @@
     <v-text-field  placeholder="Enter Mobile Number" v-model="number" required></v-text-field>
     <label ><b>ImageUrl</b></label>
     <v-text-field  placeholder="Enter ImageUrl" v-model="imageurl" required></v-text-field>
-    <labe for="address"><b>Address</b></labe><br>
-    
-    <v-text-field placeholder="Enter Address"  v-model="address" required></v-text-field>
     <label for="psw"><b>Password</b></label>
     <v-text-field  placeholder="Enter Password" :rules="passwordRules" v-model="password"   required></v-text-field>
     <label for="psw-repeat"><b>Confirm Password</b></label>
@@ -45,7 +42,6 @@ import axios from 'axios'
     password:'',
     confirmpassword:'',
     imageurl:'',
-    address:'',
     emailRules: [
           v => !!v || 'E-mail is required',
           v => /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/.test(v) || 'E-mail must be valid'
@@ -70,16 +66,12 @@ import axios from 'axios'
     methods:{
      async register(){
          if (this.$refs.signForm.validate()) {
-       const resp = await axios.post(`http://172.16.20.131:8082/login-service/register`,{
-        userName:this.name,
+       const resp = await axios.post(`http://172.16.20.131:8082/merchant-service/merchant/register`,{
+        name:this.name,
     password:this.password,
     email:this.email,
-     userImageUrl:this.imageurl,
-     address:this.address,
-     phoneNo:this.number
-
+     imgurl:this.imageurl
        })
-       this.$router.push('/login')
 window.console.log(resp)
          }
      }

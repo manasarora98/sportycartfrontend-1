@@ -55,9 +55,11 @@
       }
     },
     methods: {
-  //  handleScroll (event) {
-      
-  //   }
+   description(product){
+     this.$store.state.product=product
+     window.console.log(this.$store.state.product)
+     this.$router.push('/productDescription')
+     } 
      
     },
   

@@ -19,18 +19,24 @@ https://i.ibb.co/BKLr1Zj/Logo9.png -->
       <label for="psw"><b>Password</b></label>
       <v-text-field type="password" placeholder="Enter Password" :rules="passwordRules" v-model="password"   required></v-text-field>
       <!-- <input type="password"  placeholder="Enter Password"   v-model="password"   required> -->
+  
+      <v-radio-group   v-model="radioGroup">
+         <label for="psw"><b>User</b></label>
+        <div  @click="setUser"> <v-radio   >Merchant</v-radio></div>
+         <label for="psw"><b>Merchant</b></label>
+       <div @click="setMerchant"><v-radio ></v-radio></div>
+      </v-radio-group>
       </v-form>
-      <input type="radio" name="User" value="male"> User
-      <input type="radio" name="Seller" value="female"> Seller<br>
+  
       <button  @click="handleLogin">Login</button><br>
-       <button @click="gmailLogin"><a href="#" class="fa fa-google"></a><strong>Continue with Google</strong></button><br><br>
-      <button @click="faceBookLogin"><a href="#" class="fa fa-facebook"></a><strong> Continue with Facebook</strong></button><br>
+       <button @click="gmailLogin" v-if="roleFlag"><a href="#" class="fa fa-google"></a><strong>Continue with Google</strong></button><br><br>
+      <button @click="faceBookLogin" v-if="roleFlag"><a href="#" class="fa fa-facebook"></a><strong> Continue with Facebook</strong></button><br>
     </div>
       <span> <strong>Not an user...?</strong></span>
       <p> Then Register here....</p>
     <div class="container" style="background-color:#f1f1f1">
       <button type="button" @click="signUpUser" class="register">User Register</button>
-      <button type="button" class="register">Seller Register</button>
+      <button type="button" @click="merchantRegister"     class="register">Seller Register</button>
     </div>
   </div>
   </div>
@@ -41,7 +47,9 @@ import {mapGetters, mapActions} from 'vuex'
   export default {
       
     
-    data: () => ({      
+    data: () => ({   
+      role:'', 
+      roleFlag:true,  
     email:'',
     password:'',
     emailRules: [
@@ -68,6 +76,14 @@ import {mapGetters, mapActions} from 'vuex'
       }
     },
     methods:{
+      setMerchant(){
+    this.role='merchant'
+    this.roleFlag=false
+      },
+      setUser(){
+      this.role='user' 
+       this.roleFlag=true
+      },
       ...mapActions([
         'login'
       ]),
@@ -102,6 +118,9 @@ import {mapGetters, mapActions} from 'vuex'
       },
       signUpUser(){
         this.$router.push('/signUpUser')
+      },
+      merchantRegister(){
+        this.$router.push('/merchantRegister')
       }
 
   

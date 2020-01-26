@@ -119,6 +119,8 @@
         localStorage.setItem('temporaryId', valu)
         this.USERID=valu
            }
+           else
+           this.USERID=localStorage.getItem('temporaryId')
           }
         const resp = await axios.post(`http://172.16.20.131:8082/order-service/cart/addToCart`,{
             userId:this.USERID,

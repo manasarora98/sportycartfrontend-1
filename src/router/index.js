@@ -64,6 +64,10 @@ const routes = [
     {
       path:'/orderDetails',
       component: () =>  import('../views/children/orderDetails.vue') 
+    },
+    {
+      path:'/orderlog',
+      component: () =>  import('../views/children/orderLog.vue')  
     }
     
     ]
@@ -77,6 +81,11 @@ const routes = [
     path: '/signUpUser',
     name: 'signUp',
     component: () => import('../views/signUpUser.vue')
+  },
+  {
+    path: '/merchantRegister',
+    name: 'signUp',
+    component: () => import('../views/merchantRegister.vue')
   }
   
 ]

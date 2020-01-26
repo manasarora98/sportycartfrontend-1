@@ -67,14 +67,14 @@
     methods: {
       async addProduct(i){
         
-          this.products_cart[i].quantity=this.products_cart[i].quantity+1
+          this.products_cart[i].quantity=parseInt(this.products_cart[i].quantity)+1
       const resp = await axios.get(`http://172.16.20.131:8082/order-service/cart/cartIncrement/${this.products_details[i].productId}/${this.USERID}/${this.products_cart[i].quantity}/${this.products_cart[i].merchantId}`);
       window.console.log(resp);
       },
       async removeProduct(i){
           
           if(this.products_cart[i].quantity>0){
-            this.products_cart[i].quantity=this.products_cart[i].quantity-1
+            this.products_cart[i].quantity=parseInt(this.products_cart[i].quantity)-1
           const resp = await axios.get(`http://172.16.20.131:8082/order-service/cart/cartIncrement/${this.products_details[i].productId}/${this.USERID}/${this.products_cart[i].quantity}/${this.products_cart[i].merchantId}`);
           window.console.log(resp);
           }
@@ -101,8 +101,14 @@
     async created() {
       try {
         //if login then first replace the temporary id in database with userid
-        if(localStorage.getItem('userId'))
-        this.USERID=localStorage.getItem('userId')
+        if(localStorage.getItem('userId')){
+          this.USERID=localStorage.getItem('userId')
+          if(localStorage.getItem('temporaryId')){
+             const resp = await axios.post(`http://172.16.20.131:8082/order-service/cart/updateUserOnLogin/${localStorage.getItem('temporaryId')}/${this.USERID}`);
+             window.console.log(resp)
+          }
+        
+        }
         else
         this.USERID=localStorage.getItem('temporaryId')
         
