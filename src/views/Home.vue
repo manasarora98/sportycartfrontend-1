@@ -1,18 +1,18 @@
 <template>
 <div class="screen">
   <v-app id="inspire">
-    <v-navigation-drawer style="background-color:#1565c0"
+    <v-navigation-drawer style="background-color:#1565c0"   v-if="!getmerchantflag"
       v-model="drawer"
       :clipped="$vuetify.breakpoint.lgAndUp"
       app
       
     >
-      <h2><strong style="color:white" v-if="!getmerchantflag" >CATEGORIES</strong></h2> 
+      <h2><strong style="color:white;font-family:Comic Sans, Comic Sans MS, cursive;" v-if="!getmerchantflag" >CATEGORIES</strong></h2> 
       <hr>
        <v-list v-if="!getmerchantflag">
         <template v-for="(item,i) in categories " >
           
-            <p style="text-transform:uppercase" :key="i"   @click="callCategory(i)"><a ><strong style="color:white">{{item}}</strong></a></p>
+            <p style="text-transform:uppercase;font-family:Comic Sans, Comic Sans MS, cursive;" :key="i"   @click="callCategory(i)"><a ><strong style="color:white">{{item}}</strong></a></p>
                 
                  
              </template>
@@ -32,7 +32,7 @@
         class="ml-0 pl-4"
       >
             <img src="../assets/SportyLogo.png" style="width:65px;height:65px;border-radius:10px">
-        <span class="hidden-sm-and-down" @click="home()"  v-if="getFlag">SportyCart</span>
+        <span class="hidden-sm-and-down" style="font-family:Comic Sans, Comic Sans MS, cursive;" @click="home()"  v-if="getFlag">SportyCart</span>
         <span class="hidden-sm-and-down" v-if="getmerchantflag">SportyCart</span>
       </v-toolbar-title>
       <v-text-field
@@ -46,29 +46,29 @@
         v-if="!getmerchantflag"
         
       />
-       <v-btn  style="margin-left:10px;background-color:#0066cc;;" @click="searchFunc" v-if="!getmerchantflag">
+       <v-btn  style="margin-left:10px;background-color:#2195F3" @click="searchFunc" v-if="!getmerchantflag">
          
      <i class="fa fa-search" style="font-size:20px; margin-right:5px;"></i>
       </v-btn>
       <v-spacer />
       
- <v-btn  style="margin-left:10px;background-color:#0066cc;;" @click="cart" v-if="!getmerchantflag">
+ <v-btn  style="margin-left:10px;background-color:#2195F3" @click="cart" v-if="!getmerchantflag">
       <i class="fa fa-shopping-cart" style="font-size:20px; margin-right:5px;"></i>  
       </v-btn>
-     <v-btn  style="margin-left:10px;background-color:#0066cc;;" @click="login" v-if="!getFlag" >
+     <v-btn  style="margin-left:10px;background-color:#2195F3 ;font-family:Comic Sans, Comic Sans MS, cursive;" @click="login" v-if="!getFlag" >
        <i class="fa fa-user-o" style="font-size:20px; margin-right:5px;"></i> Log/Reg
       </v-btn>
      
-       <v-btn  style="background-color:#0066cc;;margin-left:20px" @click="orderlog"      v-if="getFlag"  >
+       <v-btn  style="background-color:#2195F3;margin-left:20px;font-family:Comic Sans, Comic Sans MS, cursive;" @click="orderlog"      v-if="getFlag"  >
       <i class="fa fa-archive" style="font-size:20px; margin-right:5px;"></i>  OrdLog
       </v-btn>
-       <v-btn  style="background-color:#0066cc;;margin-left:20px" @click="loginlog"    v-if="getFlag" >
+       <v-btn  style="background-color:#2195F3;margin-left:20px;font-family:Comic Sans, Comic Sans MS, cursive;" @click="loginlog"    v-if="getFlag" >
       <i class="fa fa-history" style="font-size:20px; margin-right:5px;"></i>  LoginLog
       </v-btn>
-       <v-btn  style="background-color:#0066cc;;margin-left:20px" @click="profile"    v-if="getFlag" >
+       <v-btn  style="background-color:#2195F3;margin-left:20px;font-family:Comic Sans, Comic Sans MS, cursive;" @click="profile"    v-if="getFlag" >
       <i class="fa fa-history" style="font-size:20px; margin-right:5px;"></i>  profile
       </v-btn>
-      <v-btn  style="background-color:#0066cc;margin-left:20px" @click="logout" v-if="getFlag || getmerchantflag" >
+      <v-btn  style="background-color:#2195F3;margin-left:20px;font-family:Comic Sans, Comic Sans MS, cursive;" @click="logout" v-if="getFlag || getmerchantflag" >
         <i class="fa fa-sign-out" style="font-size:20px; margin-right:5px;"></i>
       </v-btn>
      
@@ -110,7 +110,7 @@
           </v-tooltip>
         </v-row>
       </v-container> -->
-       <v-container fluid fill-height class="content"  style="background-color:#357ECA">
+       <v-container fluid fill-height class="content"  style="font-family:Comic Sans, Comic Sans MS, cursive; background-color:#357ECB">
         <v-layout  >
           <router-view/>
         </v-layout>

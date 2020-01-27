@@ -73,6 +73,9 @@ import axios from 'axios'
      imgurl:this.imageurl
        })
 window.console.log(resp)
+ if(resp.data.userId == null)
+       window.alert("already registered")
+       this.$router.push('/login')
          }
      }
   

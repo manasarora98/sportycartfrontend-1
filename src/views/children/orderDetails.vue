@@ -1,16 +1,16 @@
 <template>
   <v-container>
  <v-layout row wrap justify-center>
-     <h2 style="color:#4b80aa">{{msg}}</h2>
+     <h2 style="color:white">{{msg}}</h2>
      </v-layout>     
 <v-layout row wrap v-if="status"  style="margin-top:50px">
 
 
     <v-flex xs12  px-2 mb-4  md6  v-for=" (product,i) in products_details"  :key="i" >
-            <v-card color="blue-grey lighten-2" class="white--text" >
+            <v-card color="blue-grey lighten-3"  >
               <v-layout row>
                 <v-flex xs4 md4>
-                <v-img :src="product.imageUrl"
+                <v-img :src="product.imageUrl" style="margin:10px 5px 5px 20px;"
               aspect-ratio="1"
               class="grey lighten-2"
                max-width="350"

@@ -4,10 +4,10 @@
 
 
     <v-flex xs12  px-2 mb-4  md6  v-for=" (product,i) in products_details"  :key="i" >
-            <v-card color="blue-grey lighten-2" class="white--text" >
+            <v-card color="blue-grey lighten-3"  >
               <v-layout row>
                 <v-flex xs4 md4>
-                <v-img :src="product.imageUrl"
+                <v-img :src="product.imageUrl" style="margin:10px 5px 5px 20px;"
               aspect-ratio="1"
               class="grey lighten-2"
                max-width="350"
@@ -30,7 +30,7 @@
                 <v-spacer></v-spacer>
               
                 <v-btn flat color="blue" @click="addProduct(i)">Add</v-btn>
-                 <input type="text" style="width:10%;background-color:white;color:blue"   v-model="products_cart[i].quantity" required/>
+                 <input type="text" style="width:10%;background-color:white;color:blue;text-align:center;"   v-model="products_cart[i].quantity" required/>
                 <v-btn flat color="blue" @click="removeProduct(i)">Remove</v-btn>
 
               </v-card-actions>
@@ -44,7 +44,7 @@
 
                 </v-layout>
                 <v-layout justify-center >
-                  <v-btn style="background-color:#40883c" @click="callCheckout"> CHECKOUT</v-btn>
+                  <v-btn style="margin-:10px" class="mt-6" flat color="primary" @click="callCheckout"> CHECKOUT</v-btn>
                   </v-layout>
                 </v-container>
 </template>

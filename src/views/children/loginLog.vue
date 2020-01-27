@@ -5,7 +5,7 @@
     </v-layout>-->
     <v-layout row wrap>
       <v-flex xs12 px-2 mb-4 md6 v-for=" (product,i) in login_details" :key="i">
-        <v-card color="blue-grey lighten-2" class="white--text">
+        <v-card color="blue-grey lighten-3" >
           <v-layout row>
           
             <v-flex xs7>

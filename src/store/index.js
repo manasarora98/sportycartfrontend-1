@@ -115,8 +115,18 @@ const store = new Vuex.Store({
      axios.post('http://172.16.20.131:8082/login-service/login', data).
      then((res) => {
        commit('setFlag', true)
-       window.console.log(res.data)
-       success && success(res.data)
+       if(res.data.userId==null){
+     
+      window.alert("Not A Valid User")
+      this.$store.commit('setmerchantflag', false)
+      this.$store.commit('setFlag', false)
+     fail(res)
+       }
+      else{
+      window.console.log(res.data)
+      success && success(res.data)
+
+      }
      }).catch((res) => {
        fail && fail(res)
      })
@@ -127,8 +137,16 @@ const store = new Vuex.Store({
     then((res) => {
       // commit('setFlag', true)
       window.console.log("success")
+      if(res.data.userId==0){
+        
+      window.alert("Not A Valid User")
+        
+      fail(res)
+      }
+      else{
       window.console.log(res.data)
       success && success(res.data)
+      }
     }).catch((res) => {
       fail && fail(res)
     })

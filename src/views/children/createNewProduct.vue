@@ -1,5 +1,5 @@
 <template>
-<v-layout  justify-center>
+
     <div >
     <table>
         <caption style="font-size:30px;"> <strong style="color:white">CREATE A <b>NEW PRODUCT</b></strong></caption>
@@ -45,7 +45,7 @@
 </v-btn>
 <!-- <button style="background-color:green;width:10%"  @click="sendData" >Add</button> -->
 </div>
-</v-layout>
+
 </template>
 <script>
   import axios from 'axios'
@@ -95,6 +95,7 @@ window.console.log("hi from mukul")
                window.console.log(obj)
         const resp = await axios.post(`http://172.16.20.131:8082/product-service/product/createProduct`,
         obj)
+        window.alert("product createc")
         window.console.log(resp)
         }}
 }

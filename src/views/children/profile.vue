@@ -1,14 +1,14 @@
 
 <template>
-<v-layout row wrap>
+<v-layout row wrap  style="background-color:#357ECA">
 
 
     <v-flex xs12 md12 px-2 mb-4 >
-            <v-card color="blue-grey lighten-2" class="white--text" >
+            <v-card color="blue-grey lighten-3"  >
               <v-layout row>
                 <v-flex xs4 md4>
                   
-                 <v-img :src="profile.userImageUrl"
+                 <v-img style="margin:30px;border-radius:400px;height:250px;width:250px;" :src="profile.userImageUrl" 
               aspect-ratio="1"
               class="grey lighten-2"
                max-width="350"
@@ -19,8 +19,8 @@
                 </v-flex>
                 <v-flex xs7>
                   <v-card-title primary-title>
-                    <div>
-                        <h3>Name:<span style="margin-left:20px;">{{profile.userName}}</span></h3>
+                    <div style="font-family:Comic Sans, Comic Sans MS, cursive;">
+                        <h3>Name:<span style="margin-left:20px;font-family:Comic Sans, Comic Sans MS, cursive;">{{profile.userName}}</span></h3>
                         <h3>Phone Number:<span style="margin-left:20px;">{{profile.phoneNo}}</span></h3>
                          <h3>Address:<span style="margin-left:20px;">{{profile.address}}</span></h3>
                           <h3>Email:<span style="margin-left:20px;">{{profile.email}}</span></h3>
@@ -34,7 +34,7 @@
                 </v-flex>
               </v-layout>
               <v-card-actions>
-                   <div  ><h4>{{product.name}}</h4></div>
+                   <!-- <div  ><h4>{{product.name}}</h4></div> -->
                 <v-spacer></v-spacer>
                
 

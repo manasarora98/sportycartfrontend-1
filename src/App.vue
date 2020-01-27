@@ -16,6 +16,8 @@ export default {
       this.$router.push('/merchantHome')
     }
     else{
+       this.$store.commit('setFlag', false)
+       this.$store.commit('setmerchantflag',false)
         this.$router.push('/')
     }
   }

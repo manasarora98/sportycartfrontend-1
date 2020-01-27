@@ -79,6 +79,8 @@ import axios from 'axios'
      phoneNo:this.number
 
        })
+       if(resp.data.userId == null)
+       window.alert("already registered")
        this.$router.push('/login')
 window.console.log(resp)
          }

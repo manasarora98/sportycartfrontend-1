@@ -4,10 +4,10 @@
 
 
     <v-flex xs12 md4 px-2 mb-4 v-for="(product,index) in getCategory" :key="index">
-            <v-card color="blue-grey lighten-2" class="white--text" @click="description(product)">
+            <v-card color="blue-grey lighten-3"  @click="description(product)">
               <v-layout row>
                 <v-flex xs4 md4>
-                       <v-img :src="product.imageUrl"
+                       <v-img :src="product.imageUrl" style="margin:10px 5px 5px 20px;"
               aspect-ratio="1"
               class="grey lighten-2"
                max-width="350"

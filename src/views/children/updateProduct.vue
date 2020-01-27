@@ -55,6 +55,8 @@ this.productid=document.getElementById("mySelect5").selectedIndex-1;
                 stock:this.stock,
                 price:this.price
             })
+
+            window.alert("product updated")
             window.console.log(resp)
 
         }

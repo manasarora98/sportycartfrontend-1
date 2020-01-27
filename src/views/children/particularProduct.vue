@@ -1,11 +1,11 @@
  <template>
  <v-layout row wrap >
      <v-flex xs12 md12 px-2 mb-4 >
-            <v-card color="blue-grey lighten-2" class="white--text" >
+            <v-card color="blue-grey lighten-3" >
               <v-layout row>
                 <v-flex xs4 md4>
                
-                 <v-img :src="product.imageUrl"
+                 <v-img :src="product.imageUrl" style="margin:10px 5px 5px 20px;"
               aspect-ratio="1"
               class="grey lighten-2"
                max-width="350"

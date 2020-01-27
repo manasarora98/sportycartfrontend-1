@@ -110,7 +110,7 @@ import {mapGetters, mapActions} from 'vuex'
         localStorage.setItem('accessToken', res.accessToken)
          localStorage.setItem('email', res.email)
          this.$store.commit('setFlag', false),
-         this.$store.commit('setnewflag', false)
+        
          this.$store.commit('setmerchantflag', true)
         this.$router.push('/merchantHome')
       },
@@ -149,10 +149,11 @@ import {mapGetters, mapActions} from 'vuex'
         localStorage.setItem('userId', res.userId)
         localStorage.setItem('accessToken', res.accessToken)
         localStorage.setItem('email', res.email)
-        this.$store.commit('setnewflag', false)
+     
         this.$router.push('/')
       },
-      loginFail(res) {        
+      loginFail(res) { 
+        //  this.$router.push('/login')       
         window.console.log(res)
       },
       signUpUser(){

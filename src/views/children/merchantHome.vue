@@ -11,19 +11,19 @@
 <!-- <v-btn  style="background-color:#0066cc;" @click="updateProduct"><strong style="color:white">UPDATE PRODUCT</strong></v-btn ><br><br> -->
 <!-- <button type="button" style="border:3px solid green"><strong>SALES</strong></button><br><br> -->
       <v-sheet class="text-center" height="200px" style="background-color:#357ECA">
-        <v-btn style="margin-right:10px"
+        <v-btn style="margin-right:10px;background-color:#2195F3"
           class="mt-6"
          
           color="primary"
           @click="addProduct"
-        ><i class="fa fa-plus-circle" style="font-size:20px;marign:70px;"></i> ADD PRODUCT</v-btn>
+        ><i class="fa fa-plus-circle" style="font-size:20px;marign:70px;background-color:#2195F3"></i> ADD PRODUCT</v-btn>
         <v-btn
           class="mt-6"
          
           color="primary"
           @click="updateProduct"
         ><i class="fa fa-pencil-square-o" style="font-size:20px"></i>UPDATE PRODUCT</v-btn>
-        <v-btn style="margin-left:10px"
+        <v-btn style="margin-left:10px;background-color:#2195F3"
           class="mt-6"
         
           color="primary"

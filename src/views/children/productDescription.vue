@@ -4,11 +4,11 @@
 
 
     <v-flex xs12 md12 px-2 mb-4 >
-            <v-card color="blue-grey lighten-2" class="white--text" >
+            <v-card color="blue-grey lighten-3" >
               <v-layout row>
                 <v-flex xs4 md4>
                   
-                 <v-img :src="product.imageUrl"
+                 <v-img style="margin:10px 5px 5px 20px;" :src="product.imageUrl"
               aspect-ratio="1"
               class="grey lighten-2"
                max-width="350"
@@ -31,7 +31,7 @@
                 </v-flex>
               </v-layout>
               <v-card-actions>
-                   <div  ><h4>{{product.name}}</h4></div>
+                   <div  ><h3>{{product.name}}</h3></div>
                 <v-spacer></v-spacer>
                
 
@@ -44,7 +44,7 @@
 
 
     <v-flex xs12 md4 px-2 mb-4 v-for="(merchant,i) in merchants" :key="i">
-            <v-card color="blue-grey lighten-2" class="white--text" @click="description(product)">
+            <v-card color="blue-grey lighten-3"  @click="description(product)">
               <v-layout row>
         
                 <v-flex xs7>
@@ -138,6 +138,7 @@
             productId:pid
 
         });
+        alert("Product Added")
         window.console.log(resp)
          
      }
