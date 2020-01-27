@@ -24,13 +24,13 @@
                   <h4>Name:{{product.name}}</h4>
                   <h4>Price:{{order_details[i].price}}</h4>
                   <h4>Quantity:{{order_details[i].quantity}}</h4>
-                  <div @click="setRating(i)">
+                
                   <v-rating 
       v-model="order_details[i].rating"
       background-color="blue lighten-3"
       color="blue"
       x-large
-    ></v-rating></div>
+    ></v-rating>
                 </div>
               </v-card-title>
             </v-flex>
@@ -44,33 +44,28 @@
     
   </v-container>
 </template>
-<script>
-
+  <script>
   import axios from 'axios'
-  
+//   import product from './particularProduct.vue'
   export default {
-    components: {
-     
+      components: {
+      //product
     },
-    data() {
-      return {
-     
-        order_details:[],
-        status:true ,    
-        userId:'',
-        product_ids:[],
-        products_details:[]
-      }
-    },
-    methods: {
-     async setRating(i){
-     const resp = await axios.post(`http://172.16.20.131:8082/order-service/order/setProductRating/${this.order_details[i].orderId}/${this.order_details[i].productId}/${this.order_details[i].merchantId}/${localStorage.getItem('userId')}/${this.order_details[i].rating}`)
-     window.console.log(resp)
-      }
+    props: {
+      source: String,
     },
     
-  async  created(){    
-const resp = await axios.get(`http://172.16.20.131:8082/order-service/order/getRecentOrders/${localStorage.getItem('userId')}`)
+    data: () => ({
+         order_details:[],
+       product_ids:[],
+        products_details:[]
+    }),
+    methods:{
+    
+     
+    },
+   async created(){
+const resp = await axios.get(`http://172.16.20.131:8082/order-service/order/customerDetails/${localStorage.getItem('mid')}`)
 window.console.log(resp)
 
  this.order_details=[...resp.data]
@@ -84,7 +79,6 @@ window.console.log(resp)
        })
        this.products_details=[...resp1.data]
    
+    }
   }
-  }
-
 </script>

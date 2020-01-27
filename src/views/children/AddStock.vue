@@ -35,7 +35,7 @@ export default {
           
       const resp = await axios.post(`http://172.16.20.131:8082/merchant-service/productList/addProduct`,{
        productId:this.$store.state.merchantProduct.productId,
-       merchantId:10,
+       merchantId:localStorage.getItem('mid'),
        stock:this.stock,
        price:this.price
       })

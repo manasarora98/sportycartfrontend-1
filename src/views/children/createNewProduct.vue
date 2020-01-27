@@ -1,12 +1,11 @@
 <template>
+<v-layout  justify-center>
     <div >
-        
-       
-    <table style="width:90%">
-        <caption> <strong style="color:#ff6666">CREATE PRODUCT</strong></caption>
+    <table>
+        <caption style="font-size:30px;"> <strong style="color:white">CREATE A <b>NEW PRODUCT</b></strong></caption>
   <tr>
     <th>category</th>
-    <th>ProductName</th> 
+    <th>ProductName</th>
     <th>Image</th>
     <th>Price</th>
     <th>Descriptions</th>
@@ -14,23 +13,39 @@
     <th>Stock</th>
   </tr>
   <tr>
-   <select  id="mySelect2"  @change="findCategory()"  style="background-color:green;width:100%">
+   <select  id="mySelect2"  @change="findCategory()"  style="background-color:white;">
     <option value="">Select</option>
     <option v-for="(item,i) in categories" :key="i">
         {{ item}}
     </option>
-</select> 
-    <td><input v-model="productName" type="text"/></td>
-    <td><input v-model="imageUrl"   type="url"/></td>
-    <td><input v-model="price" type="Number"/></td>
-    <td><textarea v-model="description"  rows="5" cols="30"></textarea></td>
-    <td>Name:<input v-model="attribut" type="text">Value:<input v-model="value" type="text"><button @click="addAttributes">Add</button></td>
-    <td><input v-model="stock" type="number"></td>
+</select>
+    <td><input v-model="productName" type="text" style="background-color:white;border-radius:5px;"/></td>
+    <td><input v-model="imageUrl"   type="url" style="background-color:white;border-radius:5px;"/></td>
+    <td><input v-model="price" type="Number" style="background-color:white;border-radius:5px;"></td>
+    <td><textarea v-model="description"  rows="5" cols="30" style="background-color:white;border-radius:5px;"></textarea></td>
+    <td>Name:<input v-model="attribut" type="text" style="background-color:white;border-radius:5px;" placeholder="Ex:Color"><br><br>
+        Value:<input v-model="value" type="text" style="background-color:white;border-radius:5px;" placeholder="Ex:Red"><br>
+        <v-btn style="margin:10px"
+          class="mt-6"
+          flat
+          color="primary"
+          @click="addAttributes"
+        >ADD
+</v-btn>
+    <td><input v-model="stock" type="number" style="background-color:white;border-radius:5px;"></td>
   </tr>
 </table>
 <br>
-<button style="background-color:green;width:10%"  @click="sendData" >Add</button>
+<v-btn style="margin-:10px"
+          class="mt-6"
+          flat
+          color="primary"
+          @click="sendData"
+        ><i class="fa fa-plus-circle" style="font-size:20px;marign:70px;"></i>ADD
+</v-btn>
+<!-- <button style="background-color:green;width:10%"  @click="sendData" >Add</button> -->
 </div>
+</v-layout>
 </template>
 <script>
   import axios from 'axios'
@@ -74,7 +89,7 @@ window.console.log("hi from mukul")
             obj['description']=this.description
              obj["productAttributes"]=this.attributes,
             obj["imageUrl"]=this.imageUrl,
-            obj["merchantId"]=8
+            obj["merchantId"]=localStorage.getItem('mid')
             obj["price"]=this.price,
             obj["stock"]=this.stock,
                window.console.log(obj)
@@ -85,24 +100,12 @@ window.console.log("hi from mukul")
 }
 </script>
 <style scoped>
-.addproduct{
-     margin: 10px 0px 0px 300px;
-  width: 256px;
-  height:350px;
-  padding: 2px;
+table{
+  float: left;
 }
 table,tr,th,td{
-    width: auto;
     border:2px solid black;
-    text-align: center;
-    background-color:#e6f9ff;
-}
-.addbutton{
-    text: center;
-    background-color: green;
-    color:white;
-    margin-top: 10px;
-    float: left;
-    font-size: 35px;
+    text-align:center;
+    background-color:cornflowerblue;
 }
 </style>

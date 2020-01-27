@@ -18,13 +18,14 @@
                 <v-flex xs7>
                   <v-card-title primary-title>
                     <div>
-                         <div>{{product.description}}</div>
+                         <!-- <div>{{product.description}}</div> -->
+                         <div  ><h4>{{product.name}}</h4></div>
                     </div>
                   </v-card-title>
                 </v-flex>
               </v-layout>
               <v-card-actions>
-                   <div  ><h4>{{product.name}}</h4></div>
+                   
                 <v-spacer></v-spacer>
                 <v-btn  color="blue">Add To Cart</v-btn>
 

@@ -68,6 +68,18 @@ const routes = [
     {
       path:'/orderlog',
       component: () =>  import('../views/children/orderLog.vue')  
+    },
+    {
+      path:'/sales',
+      component: () =>  import('../views/children/sales.vue')  
+    },
+    {
+      path:'/loginLog',
+      component: () =>  import('../views/children/loginLog.vue')  
+    },
+    {
+      path:'/profile',
+      component: () =>  import('../views/children/profile.vue')  
     }
     
     ]

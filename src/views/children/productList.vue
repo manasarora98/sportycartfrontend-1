@@ -3,7 +3,7 @@
 <v-layout row wrap>
 
 
-    <v-flex xs12 md6 px-2 mb-4 v-for="(product,index) in products" :key="index">
+    <v-flex xs12 md4 px-2 mb-4 v-for="(product,index) in products" :key="index">
             <v-card color="blue-grey lighten-2" class="white--text" @click="description(product)">
               <v-layout row>
                 <v-flex xs4 md4>
@@ -17,14 +17,14 @@
                 <v-flex xs7>
                   <v-card-title primary-title>
                     <div>
-                         <div>{{product.description}}</div>
-                     
+                         <!-- <div>{{product.description}}</div> -->
+                     <div  ><h4  style= "overflow-wrap: break-word;">{{product.name}}</h4></div>
                     </div>
                   </v-card-title>
                 </v-flex>
               </v-layout>
               <v-card-actions>
-                   <div  ><h4>{{product.name}}</h4></div>
+                   
                 <v-spacer></v-spacer>
                 <v-btn  color="blue">Add To Cart</v-btn>
 

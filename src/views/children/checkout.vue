@@ -74,7 +74,8 @@
         products_details:[],
         product_ids:[],
         totalSum:0,
-        userId:''
+        userId:'',
+        email:'mukulgupta6111@gmail.com'
        
       }
     },

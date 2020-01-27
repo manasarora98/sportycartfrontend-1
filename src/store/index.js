@@ -20,10 +20,13 @@ const store = new Vuex.Store({
     product_cart:[],
     product_details:[],
     confirmOrderDetails:[],
+    merchantflag:false,
     loginDetailsUser: {
       isLoggedIn: false
     },
     flag: false
+  
+
     
 },
   getters:{
@@ -47,8 +50,10 @@ const store = new Vuex.Store({
     },
     getFlag(state){
       return state.flag
+    },
+    getmerchantflag(state){
+      return state.merchantflag
     }
-
   },
   mutations: {
     product (state, payload) {
@@ -76,6 +81,9 @@ const store = new Vuex.Store({
     setFlag(state,payload){
       window.console.log("in mutation",payload)
       state.flag=payload
+    },
+    setmerchantflag(state,payload){
+      state.merchantflag=payload
     }
    
   },
@@ -113,6 +121,18 @@ const store = new Vuex.Store({
        fail && fail(res)
      })
    },
+   merchantlogin ( context,{data, success, fail}) {
+    window.console.log("hi i am in store")
+    axios.post('http://172.16.20.131:8082/merchant-service/merchant/login', data).
+    then((res) => {
+      // commit('setFlag', true)
+      window.console.log("success")
+      window.console.log(res.data)
+      success && success(res.data)
+    }).catch((res) => {
+      fail && fail(res)
+    })
+  },
    googleauth({commit}) {
     firebase.auth().signInWithPopup(googleauthprovider).then(function (result) {
       var token = result.credential.idToken;

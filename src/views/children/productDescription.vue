@@ -54,6 +54,12 @@
                          <p>STOCK  :   {{merchant.stock}}</p>
                          <h4>PRICE  :  {{merchant.price}}</h4>
                     </div>
+                    <v-rating 
+      v-model="merchant.merchantRating"
+      background-color="blue lighten-3"
+      color="blue"
+      x-large
+    ></v-rating>
                   </v-card-title>
                 </v-flex>
               </v-layout>
@@ -115,7 +121,7 @@
           this.USERID=localStorage.getItem('userId')
           else{
            if(!localStorage.getItem("temporaryId"))
-           { let valu = this.rand(100,1);
+           { let valu = this.rand(3000,1000);
         localStorage.setItem('temporaryId', valu)
         this.USERID=valu
            }

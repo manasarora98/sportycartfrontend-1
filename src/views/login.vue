@@ -28,7 +28,7 @@ https://i.ibb.co/BKLr1Zj/Logo9.png -->
       </v-radio-group>
       </v-form>
   
-      <button  @click="handleLogin">Login</button><br>
+      <button  @click="handleRoles">Login</button><br>
        <button @click="gmailLogin" v-if="roleFlag"><a href="#" class="fa fa-google"></a><strong>Continue with Google</strong></button><br><br>
       <button @click="faceBookLogin" v-if="roleFlag"><a href="#" class="fa fa-facebook"></a><strong> Continue with Facebook</strong></button><br>
     </div>
@@ -48,8 +48,9 @@ import {mapGetters, mapActions} from 'vuex'
       
     
     data: () => ({   
+      radioGroup:1,
       role:'', 
-      roleFlag:true,  
+      roleFlag:false,  
     email:'',
     password:'',
     emailRules: [
@@ -76,6 +77,43 @@ import {mapGetters, mapActions} from 'vuex'
       }
     },
     methods:{
+      handleRoles(){
+        if(this.role=='user'){
+        this.handleLogin()
+        }
+        else{
+        this.merchantLogin()    
+        window.console.log("hi i am in merchnt")
+        }   
+      },
+      
+       ...mapActions([
+        'merchantlogin'
+      ]),
+      merchantLogin(){
+         if (this.$refs.loginForm.validate()) {
+             window.console.log("console")
+        const payload = {
+          email: this.email,
+          password: this.password
+        }
+        this.merchantlogin({
+          data: payload,
+          success: this.merchantloginSuccess,
+          fail: this.loginFail 
+        })
+         }
+      },
+       merchantloginSuccess (res) {
+        window.console.log(res)
+        localStorage.setItem('mid', res.userId)
+        localStorage.setItem('accessToken', res.accessToken)
+         localStorage.setItem('email', res.email)
+         this.$store.commit('setFlag', false),
+         this.$store.commit('setnewflag', false)
+         this.$store.commit('setmerchantflag', true)
+        this.$router.push('/merchantHome')
+      },
       setMerchant(){
     this.role='merchant'
     this.roleFlag=false
@@ -110,10 +148,11 @@ import {mapGetters, mapActions} from 'vuex'
         window.console.log(res)
         localStorage.setItem('userId', res.userId)
         localStorage.setItem('accessToken', res.accessToken)
+        localStorage.setItem('email', res.email)
+        this.$store.commit('setnewflag', false)
         this.$router.push('/')
       },
-      loginFail(res) {
-        
+      loginFail(res) {        
         window.console.log(res)
       },
       signUpUser(){

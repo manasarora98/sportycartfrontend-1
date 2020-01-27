@@ -5,10 +5,11 @@
       v-model="drawer"
       :clipped="$vuetify.breakpoint.lgAndUp"
       app
+      
     >
-      <h2><strong style="color:white">CATEGORIES</strong></h2> 
+      <h2><strong style="color:white" v-if="!getmerchantflag" >CATEGORIES</strong></h2> 
       <hr>
-       <v-list >
+       <v-list v-if="!getmerchantflag">
         <template v-for="(item,i) in categories " >
           
             <p style="text-transform:uppercase" :key="i"   @click="callCategory(i)"><a ><strong style="color:white">{{item}}</strong></a></p>
@@ -31,7 +32,8 @@
         class="ml-0 pl-4"
       >
             <img src="../assets/SportyLogo.png" style="width:65px;height:65px;border-radius:10px">
-        <span class="hidden-sm-and-down" @click="home()">SportyCart</span>
+        <span class="hidden-sm-and-down" @click="home()"  v-if="getFlag">SportyCart</span>
+        <span class="hidden-sm-and-down" v-if="getmerchantflag">SportyCart</span>
       </v-toolbar-title>
       <v-text-field
       v-model="searchString"
@@ -41,30 +43,33 @@
         prepend-inner-icon="mdi-magnify"
         label="Search"
         class="hidden-sm-and-down"
+        v-if="!getmerchantflag"
         
       />
-       <v-btn  style="margin-left:10px;background-color:#0066cc;;" @click="searchFunc">
-        Search
+       <v-btn  style="margin-left:10px;background-color:#0066cc;;" @click="searchFunc" v-if="!getmerchantflag">
+         
+     <i class="fa fa-search" style="font-size:20px; margin-right:5px;"></i>
       </v-btn>
       <v-spacer />
       
- <v-btn  style="margin-left:10px;background-color:#0066cc;;" @click="cart" >
-        Cart
+ <v-btn  style="margin-left:10px;background-color:#0066cc;;" @click="cart" v-if="!getmerchantflag">
+      <i class="fa fa-shopping-cart" style="font-size:20px; margin-right:5px;"></i>  
       </v-btn>
-     <v-btn  style="margin-left:10px;background-color:#0066cc;;" @click="login" v-if="!getFlag">
-        Log/reg
+     <v-btn  style="margin-left:10px;background-color:#0066cc;;" @click="login" v-if="!getFlag" >
+       <i class="fa fa-user-o" style="font-size:20px; margin-right:5px;"></i> Log/Reg
       </v-btn>
-      <v-btn  style="background-color:#0066cc;;margin-left:20px"  @click="merchantAdd">
-        Merchant
-      </v-btn>
+     
        <v-btn  style="background-color:#0066cc;;margin-left:20px" @click="orderlog"      v-if="getFlag"  >
-       OrdLog
+      <i class="fa fa-archive" style="font-size:20px; margin-right:5px;"></i>  OrdLog
       </v-btn>
-       <v-btn  style="background-color:#0066cc;;margin-left:20px" v-if="getFlag" >
-        LoginLog
+       <v-btn  style="background-color:#0066cc;;margin-left:20px" @click="loginlog"    v-if="getFlag" >
+      <i class="fa fa-history" style="font-size:20px; margin-right:5px;"></i>  LoginLog
       </v-btn>
-      <v-btn  style="background-color:#0066cc;margin-left:20px" @click="logout"  v-if="getFlag" >
-        Logout
+       <v-btn  style="background-color:#0066cc;;margin-left:20px" @click="profile"    v-if="getFlag" >
+      <i class="fa fa-history" style="font-size:20px; margin-right:5px;"></i>  profile
+      </v-btn>
+      <v-btn  style="background-color:#0066cc;margin-left:20px" @click="logout" v-if="getFlag || getmerchantflag" >
+        <i class="fa fa-sign-out" style="font-size:20px; margin-right:5px;"></i>
       </v-btn>
      
       
@@ -105,8 +110,8 @@
           </v-tooltip>
         </v-row>
       </v-container> -->
-       <v-container fluid fill-height class="content">
-        <v-layout>
+       <v-container fluid fill-height class="content"  style="background-color:#357ECA">
+        <v-layout  >
           <router-view/>
         </v-layout>
       </v-container>
@@ -166,7 +171,9 @@ import {mapGetters} from 'vuex'
       ],
     }),
     computed:{
-      ...mapGetters(['getFlag'])
+      ...mapGetters(['getFlag']),
+      ...mapGetters(['getmerchantflag']),
+       ...mapGetters(['getnewflag'])
     },
     methods:{
       searchFunc(){
@@ -182,11 +189,21 @@ this.$router.push('/cart')
         this.$router.push('/merchantHome')
       },
       login(){this.$router.push('/login')},
+      profile(){
+        this.$router.push('/profile')
+      },
+      loginlog(){
+        window.console.log("fdgtdgrtfghgf")
+        this.$router.push('/loginLog')},
       logout(){
        
         localStorage.removeItem('userId')
         localStorage.removeItem('accessToken')  
+        localStorage.removeItem('mid') 
+         localStorage.removeItem('email') 
       this.$store.commit('setFlag',false)
+   
+        this.$store.commit('setmerchantflag', false)
         this.$router.push('/')
         },
         orderlog(){
